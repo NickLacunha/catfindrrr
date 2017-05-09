@@ -7,13 +7,18 @@ var { Router,
         Link } = ReactRouter;
 		
 var { ButtonToolbar,
-		 Button
+		 Button,
+		 Jumbotron,
+		 FormGroup,
+		 ControlLabel,
+		 FormControl
 	} = ReactBootstrap
 
 var destination = document.querySelector("#container");
 
 // home componenet
 var Home = React.createClass({
+	// this is where the cats go
     render: function() {
         return (
         <div>
@@ -36,6 +41,7 @@ var Home = React.createClass({
 //contact component
 var Contact = React.createClass({
     render: function() {
+		// this 
         return (
         <div>
             <h2>GOT QUESTIONS?</h2>
@@ -70,30 +76,57 @@ var Stuff = React.createClass({
     }
 });
 
+/* Catfindrrr components */
+var SubmitCat = React.createClass({
+	render: function() {
+		return (
+		<div>
+			<form>
+			<FormGroup
+				controlId="formSubmitCat"
+				
+			>
+				<ControlLabel>Submit yr cat here plz</ControlLabel>
+				<FormControl
+					type="file"
+					accept="image"
+				/>
+				<FormControl.Feedback />
+			</FormGroup>
+			</form>
+		</div>
+		)
+	;}
+
+
+})
+
 //Initial frame
 var App = React.createClass({
     render: function() {
         return (
-        <div>
-            <h1>Simple SPA</h1>
+        <div className="main">
+            <h1>C@findrrr</h1>
             <ButtonToolbar>
-                <Button><IndexLink to="/" activeClassName="active">Home</IndexLink></Button>
-                <Button><Link to="/stuff" activeClassName="active">Stuff</Link></Button>
-                <Button><Link to="/contact" activeClassName="active">Contact</Link></Button>
+                <IndexLink to="/" activeClassName="active"><Button>Find Cats!</Button></IndexLink>
+                <Link to="/stuff" activeClassName="active"><Button>Submit A Cat!</Button></Link>
+                <Link to="/contact" activeClassName="active"><Button>Contact us!</Button></Link>
             </ButtonToolbar>
             <div className="content">
-                {this.props.children}
+				<Jumbotron>
+					{this.props.children}
+				</Jumbotron>
             </div>
         </div>
-    )
-        }
+		)
+    }
 });
 
 ReactDOM.render(
 <Router history={ReactRouter.hashHistory}>
     <Route path="/" component={App}>
         <IndexRoute component={Home}/>
-        <Route path="stuff" component={Stuff} />
+        <Route path="stuff" component={SubmitCat} />
         <Route path="contact" component={Contact} />
     </Route>
 </Router>,
