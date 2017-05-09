@@ -1,9 +1,14 @@
-﻿var { Router,
+﻿// this is some babel-y black magic
+var { Router,
         Route,
         IndexRoute,
         IndexLink,
         hashHistory,
         Link } = ReactRouter;
+		
+var { ButtonToolbar,
+		 Button
+	} = ReactBootstrap
 
 var destination = document.querySelector("#container");
 
@@ -71,11 +76,11 @@ var App = React.createClass({
         return (
         <div>
             <h1>Simple SPA</h1>
-            <ul className="header">
-                <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-                <li><Link to="/stuff" activeClassName="active">Stuff</Link></li>
-                <li><Link to="/contact" activeClassName="active">Contact</Link></li>
-            </ul>
+            <ButtonToolbar>
+                <Button><IndexLink to="/" activeClassName="active">Home</IndexLink></Button>
+                <Button><Link to="/stuff" activeClassName="active">Stuff</Link></Button>
+                <Button><Link to="/contact" activeClassName="active">Contact</Link></Button>
+            </ButtonToolbar>
             <div className="content">
                 {this.props.children}
             </div>
