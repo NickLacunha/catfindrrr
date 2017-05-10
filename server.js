@@ -1,6 +1,7 @@
 var path = require('path')
 var express = require('express')
 var app = express()
+var React = require('react');
 
 // initialize app
 app.set('view engine', 'ejs');
