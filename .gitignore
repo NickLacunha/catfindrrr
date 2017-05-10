@@ -1,8 +1,8 @@
 node_modules
 devnotes.txt
 bower_components
-judo-heroes/*
-photo_album/*
+judo-heroes
+photo_album
 
 # Windows image file caches
 Thumbs.db
