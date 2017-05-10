@@ -1,0 +1,22 @@
+{
+  "name": "catfindrrr",
+  "version": "1.0.0",
+  "description": "Helps u find c@s",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickLacunha/catfindrrr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NickLacunha/catfindrrr/issues"
+  },
+  "homepage": "https://github.com/NickLacunha/catfindrrr#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
