@@ -2,9 +2,9 @@ var path = require('path')
 var express = require('express')
 var app = express()
 var React = require('react');
-var renderToString = require('react-dom/server/renderToString');
-var match = require('react-router/match');
-var RouterContext = require ('react-router/RouterContext');
+var renderToString = require('react-dom/server').renderToString;
+var match = require('react-router').match;
+var RouterContext = require('react-router').RouterContext;
 var routes = require('./routes');
 var NotFoundPage = require('.components/NotFoundPage');
 
