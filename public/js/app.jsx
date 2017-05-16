@@ -103,7 +103,7 @@ var SubmitCat = React.createClass({
 })
 
 //Initial frame
-var App = React.createClass({
+var Layout = React.createClass({
     render: function() {
         return (
         <div className="main">

@@ -2,20 +2,18 @@
 
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
-/*
-TODO
-Replace these w/ yr own components (nameley the ones that are down there in the routes variable)
-import Layout from './components/Layout';
-import IndexPage from './components/IndexPage';
-import AthletePage from './components/AthletePage';
-import NotFoundPage from './components/NotFoundPage';
-*/
+
+import {Layout} from './components/Layout';
+/*import Home from './components/Home';
+import SubmitCat from './components/SubmitCat';
+import Contact from './components/Contact';*/
+import {NotFoundPage} from './components/NotFoundPage';
+
 
 const routes = (
-    <Route path="/" component={App}>
+    <Route path="/" component={Layout}>
         <IndexRoute component={Home}/>
-        <Route path="stuff" component={SubmitCat} />
-        <Route path="contact" component={Contact} />
+
     </Route>
 );
 

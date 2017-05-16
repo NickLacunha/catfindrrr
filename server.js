@@ -1,18 +1,36 @@
+'use strict'
+
+/*
 var path = require('path')
 var express = require('express')
 var app = express()
 var React = require('react');
 var renderToString = require('react-dom/server').renderToString;
-var match = require('react-router').match;
-var RouterContext = require('react-router').RouterContext;
+var ReactRouter = require('react-router');
+var RoutingContext = ReactRouter.RoutingContext;
+var match = RoutingContext.match;
 var routes = require('./routes');
-var NotFoundPage = require('.components/NotFoundPage');
+import NotFoundPage from './components/NotFoundPage';
+*/
 
+import path from 'path';
+import { Server } from 'http';
+import Express from 'express';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { match, RouterContext } from 'react-router';
+import routes from './routes';
+import {NotFoundPage} from './components/NotFoundPage';
+
+const app = new Express();
+const server = new Server(app);
+
+console.log(match);
 
 // initialize app
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.static(path.join(_dirname, 'public')));
+app.use(Express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
@@ -69,6 +87,15 @@ app.get('/home/', function (req, res) {
   );
 })
 
+/*
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
+*/
+
+server.listen(3000, err => {
+  if (err) {
+    return console.error(err);
+  }
+  console.info("Server running on http://localhost:3000");
+});
