@@ -5,5 +5,6 @@ import ReactDOM from 'react-dom';
 import AppRoutes from './components/AppRoutes';
 
 window.onload = () => {
-  ReactDOM.render(<AppRoutes/>, document.getElementById('container'));
+    console.log("ReactDOM.render now")
+    ReactDOM.render(<AppRoutes/>, document.getElementById('container'));
 };
