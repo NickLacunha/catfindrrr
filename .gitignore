@@ -3,6 +3,7 @@ devnotes.txt
 bower_components
 judo-heroes
 photo_album
+babel_cache
 
 # Windows image file caches
 Thumbs.db
