@@ -25,4 +25,4 @@ process.on('SIGINT', function() {
   }); 
 });
 
-import '../models/kitten.js'
+export default db;

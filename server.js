@@ -22,41 +22,13 @@ import { match, RouterContext } from 'react-router';
 import routes from './routes';
 import NotFoundPage from './components/NotFoundPage';
 
+import db from './config/db'
+import Kitten from '../models/kitten.js'
+
+//console.log(match);
+
 const app = new Express();
 const server = new Server(app);
-
-
-/* mongo stuff */
-/*
-	TODO: refactor
-	connection info to config file
-	kittySchema/Kitten to a model file
-	transaction to a controller file
-	export db, Kitten(, kittySchema?)
-*/
-
-
-import './config/db';
-
-var kittySchema = mongoose.Schema({
-	// fields???
-	// whatever identifiers are needed for cloudinary
-	// dimensions if possible
-	// geotag eventually
-	// date submitted?
-	// whatever other fields we let the user add to the thing
-});
-
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function(){
-	var Kitten = db.model('Kitten', kittySchema);
-	
-	// now we can use the API on Kitten to do the stuff
-	
-	
-});
-
-console.log(match);
 
 // initialize app
 app.set('view engine', 'ejs');
@@ -71,10 +43,19 @@ app.get('/', function (req, res) {
 c@Findrrr API
 */
 app.get('/cats/random', function (req, res) {
-	// should return a random public ID from the Catabase
+	// should return a random cat from the Catabase
+
+	/* {
+		var Kitten = db.model('Kitten', kittySchema);
+	
+		// now we can use the API on Kitten to do the stuff
+	});
     
 	// this scope will need to be moved into a mongo connect? I think?
-	{
+	 */
+	
+	
+	/* db.once('open', function(){
 		CatModel.count().exec(
 			function (err, count) {
 				var random = Math.floor(Math.random() * count);
@@ -87,7 +68,13 @@ app.get('/cats/random', function (req, res) {
 						console.log(result);
 					});
 			});
-	}
+	}); */
+	
+	
+	// do I just return baby meow???
+	db.once('open', function(){
+		baby = Kitten.random();
+	});
 	
 })
 
