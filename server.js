@@ -25,6 +25,37 @@ import NotFoundPage from './components/NotFoundPage';
 const app = new Express();
 const server = new Server(app);
 
+
+/* mongo stuff */
+/*
+	TODO: refactor
+	connection info to config file
+	kittySchema/Kitten to a model file
+	transaction to a controller file
+	export db, Kitten(, kittySchema?)
+*/
+
+
+import './config/db';
+
+var kittySchema = mongoose.Schema({
+	// fields???
+	// whatever identifiers are needed for cloudinary
+	// dimensions if possible
+	// geotag eventually
+	// date submitted?
+	// whatever other fields we let the user add to the thing
+});
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function(){
+	var Kitten = db.model('Kitten', kittySchema);
+	
+	// now we can use the API on Kitten to do the stuff
+	
+	
+});
+
 console.log(match);
 
 // initialize app
@@ -40,15 +71,33 @@ app.get('/', function (req, res) {
 c@Findrrr API
 */
 app.get('/cats/random', function (req, res) {
-  // should return a random public ID from the Catabase
+	// should return a random public ID from the Catabase
     
+	// this scope will need to be moved into a mongo connect? I think?
+	{
+		CatModel.count().exec(
+			function (err, count) {
+				var random = Math.floor(Math.random() * count);
+				
+				User.findOne().skip(random).exec(
+					function (err, result){
+						
+						// result is cat.
+						
+						console.log(result);
+					});
+			});
+	}
+	
 })
 
 app.post('/cats/', function (req, res) {
-  /*
-  should call the cloudinary api to add the file, then store
-  the public id in our mongo database so that we can retrieve it later  
-  */
+	/*
+	should call the cloudinary api to add the file, then store
+	the public id in our mongo database so that we can retrieve it later  
+	*/
+	
+	
 })
 
 /*
