@@ -22,10 +22,13 @@ import { match, RouterContext } from 'react-router';
 import routes from './routes';
 import NotFoundPage from './components/NotFoundPage';
 
+import db from './config/db'
+import Kitten from '../models/kitten.js'
+
+//console.log(match);
+
 const app = new Express();
 const server = new Server(app);
-
-console.log(match);
 
 // initialize app
 app.set('view engine', 'ejs');
@@ -40,15 +43,48 @@ app.get('/', function (req, res) {
 c@Findrrr API
 */
 app.get('/cats/random', function (req, res) {
-  // should return a random public ID from the Catabase
+	// should return a random cat from the Catabase
+
+	/* {
+		var Kitten = db.model('Kitten', kittySchema);
+	
+		// now we can use the API on Kitten to do the stuff
+	});
     
+	// this scope will need to be moved into a mongo connect? I think?
+	 */
+	
+	
+	/* db.once('open', function(){
+		CatModel.count().exec(
+			function (err, count) {
+				var random = Math.floor(Math.random() * count);
+				
+				User.findOne().skip(random).exec(
+					function (err, result){
+						
+						// result is cat.
+						
+						console.log(result);
+					});
+			});
+	}); */
+	
+	
+	// do I just return baby meow???
+	db.once('open', function(){
+		baby = Kitten.random();
+	});
+	
 })
 
 app.post('/cats/', function (req, res) {
-  /*
-  should call the cloudinary api to add the file, then store
-  the public id in our mongo database so that we can retrieve it later  
-  */
+	/*
+	should call the cloudinary api to add the file, then store
+	the public id in our mongo database so that we can retrieve it later  
+	*/
+	
+	
 })
 
 /*
